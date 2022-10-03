@@ -1,1 +1,2 @@
 Lab 1: Git version-control system, AVR tools
+Lab 2: GPIO control registers
