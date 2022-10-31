@@ -9,8 +9,8 @@
    | Right  | 0&nbsp;V | 0  | 0 | 0 |
    | Up     | 0.495&nbsp;V | 101 | 99 | 63 |
    | Down   | 1.203&nbsp;V | 246 | 256 | 101 |
-   | Left   | 1.97V | 410 | 403 | 19a |
-   | Select | 3.18V | 640 | 651 | 282 |
+   | Left   | 1.97V | 403 | 410 | 19a |
+   | Select | 3.18V | 651 | 640 | 282 |
    | none   | 5V | 1023 | 1023 | 3ff |
 
 ### Temperature meter
