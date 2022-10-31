@@ -6,12 +6,12 @@
 
    | **Push button** | **PC0[A0] voltage** | **ADC value (calculated)** | **ADC value (measured)** | **ADC value (measured, hex)** |
    | :-: | :-: | :-: | :-: | :-: |
-   | Right  | 0&nbsp;V | 0   | 0 | 0 |
-   | Up     | 0.495&nbsp;V | 101 |  |  |
-   | Down   | 1.203&nbsp;V | 246 |  |  |
-   | Left   |  | 410 |  |  |
-   | Select |  | 640 |  |  |
-   | none   |  | 1023 |  |  |
+   | Right  | 0&nbsp;V | 0  | 0 | 0 |
+   | Up     | 0.495&nbsp;V | 101 | 99 | 63 |
+   | Down   | 1.203&nbsp;V | 246 | 256 | 101 |
+   | Left   | 1.97V | 410 | 403 | 19a |
+   | Select | 3.18V | 640 | 651 | 282 |
+   | none   | 5V | 1023 | 1023 | 3ff |
 
 ### Temperature meter
 
