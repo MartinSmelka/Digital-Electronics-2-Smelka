@@ -10,7 +10,7 @@
    * SPI pins
    * external interrupt pins INT0, INT1
 
-   ![your figure](ihttps://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Lab_7/lab7-i2c/test/UNO_PINS.png)
+   ![your figure](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Lab_7/lab7-i2c/test/UNO_PINS.png](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Lab_7/lab7-i2c/test/UNO_PINS.png)
 
 ### I2C communication
 
