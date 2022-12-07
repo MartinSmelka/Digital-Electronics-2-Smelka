@@ -118,6 +118,11 @@ LEDs used in the circuit has RED color, Package: DIL
 
 Put flowchats of your algorithm(s):
 
+![main() flowchart](https://user-images.githubusercontent.com/99726477/206249152-b1a7adec-ce92-482e-8fa0-cd7f7217b228.png)
+
+![TIMER (1) drawio](https://user-images.githubusercontent.com/99726477/206250570-910ffbef-407b-4804-8bf5-ca6d63b19a8d.png)
+
+![last_flow drawio (1)](https://user-images.githubusercontent.com/99726477/206251639-323e08ec-3ac5-4cbf-92e9-3082fb8ac1d5.png)
 
 ## Video
 
