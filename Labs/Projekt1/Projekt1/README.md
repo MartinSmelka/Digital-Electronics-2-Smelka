@@ -121,7 +121,7 @@ Put flowchats of your algorithm(s):
 
 ## Video
 
-[Youtube Link to View Implementation of the Project](https://youtu.be/HDc3q6Czcmg)
+[Youtube Link to View the Implementation of the Project](https://youtu.be/HDc3q6Czcmg)
 
 ## References
 
