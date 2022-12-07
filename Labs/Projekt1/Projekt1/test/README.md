@@ -29,8 +29,8 @@ The goal of the project is cooperation in pairs, further study of the topic, des
 
 ### Team members
 
-* Martin Šmelka
-* Šimon Špánik
+* Martin Šmelka(App Design, Code, Device Planning)
+* Šimon Špánik(Device Planning, Documentation)
 
 ## Hardware description
 
