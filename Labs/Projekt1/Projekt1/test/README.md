@@ -111,7 +111,10 @@ LEDs used in the circuit has RED color, Package: DIL
 
 
 ## Software description
-
+ 1. **Timer:** [timer.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/include/timer.h)
+ 2. **Gpio:** [gpio.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/lib/gpio/gpio.c), [gpio.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/lib/gpio/gpio.h)
+ 3. **LCD:** [lcd.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/lib/lcd/lcd.c), [lcd.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/lib/lcd/lcd.h), [lcd_definitions.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/lib/lcd/lcd_definitions.h)
+ 4. **Source:** [main.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Projekt1/Projekt1/src/main.c)
 Put flowchats of your algorithm(s). Write descriptive text of your libraries and source files. Put direct links to these files in `src` or `lib` folders.
 
 ## Video
