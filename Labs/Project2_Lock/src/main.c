@@ -169,7 +169,7 @@ ISR(TIMER1_OVF_vect)
       else {
       counter --;
       }
-     // Encoder capped at 6 for six states
+     // Encoder capped at 6 for six states(6 lock positions)
       if(counter>6)
         counter = 6;
       else if(counter<-6)
@@ -191,9 +191,8 @@ SW_ENC = GPIO_read(&PIND,OutputSW);
 /* Function definitions ----------------------------------------------*/
 /**********************************************************************
  * Function: Locl_vect function where the ADC converts Analog Joystick input into useable Digital 
- * Purpose:  Adress shift due to single ADC limitation
- *           Display X and Y variable as they are converted and read
- *           Set up overflow
+ * Purpose:  Lock Driving
+ *           
  **********************************************************************/
 
 ISR(ADC_vect)
@@ -206,8 +205,7 @@ ISR(ADC_vect)
   GPIO_write_high(&PORTC,LED_B_Red);
 
   
-  /* Blinking LEDS and directional fucntions -----------------------------------------*/
-  /* Using arrays of possible location of the joystic in two dimensions represented by two variables X and Y we can activate coresponding LEDs -----------------------------------------*/
+  /* Encoder status for LCD -----------------------------------------*/
   if( counter == 0 || counter == 0 )
   {  
       lcd_gotoxy(6, 1);
@@ -259,13 +257,14 @@ ISR(ADC_vect)
       lcd_gotoxy(6, 1);
       lcd_puts("Lock AB");  
     }
-
+ /* Encoder SW status for driving the Servos and LEDs -----------------------------------------*/
+ /* Reset Servo when Encoder SW is not pressed -----------------------------------------*/
 if( SW_ENC == 1)
   {  
 
     } 
 
-
+/* Set Position Servo("Lock") when Encoder SW is pressed -----------------------------------------*/
 if( SW_ENC == 0 && (counter == 1 || counter == -1) )
   {  
       GPIO_write_low(&PORTC,LED_A_Green);
