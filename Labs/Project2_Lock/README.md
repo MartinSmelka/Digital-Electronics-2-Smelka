@@ -127,6 +127,6 @@ Put flowchats of your algorithm(s):
 
 ## References
 
-1. https://www.tme.eu/Document/07d3a201631d75ac52980710936cebec/410-142P.pdf
+1. [Digilent PmodCLP LCD module](https://www.tme.eu/Document/07d3a201631d75ac52980710936cebec/410-142P.pdf)
 2. [SG90](http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf)
 3. [KY040](https://www.rcscomponents.kiev.ua/datasheets/ky-040-datasheet.pdf)
