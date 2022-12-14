@@ -111,7 +111,7 @@ The LEDs are used to signify a status of their assigned servo "Lock" (GREEN = "U
 #### Description
 Lightweight servo capable of turning 180 degrees (90 in either way). Lightweight and controlable via generated PWM. 
 
-Pinout for SG90:
+Pinout:
 
 ![image](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Pic/SG90_Pin_out.png)
 
