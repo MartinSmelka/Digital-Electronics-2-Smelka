@@ -25,9 +25,23 @@ The goal of the project is cooperation in pairs, further study of the topic, des
    └── README.md       // Report of this project
    ```
 
-## Recommended README.md file structure
+# Table of Contents
+**[Hardware description](#hardware-description)**
 
-### Team members
+   * [Rotary Encoder](#rotary-encoder)
+   * [Servo SG90](#Servo)
+   * [LCD](#lcd)
+
+**[Software description](#software-description)**
+   * [Repository structure](#repostruct)
+   * [Flowcharts](#flowcharts)
+      * [Main](#main)
+      * [Timer1](#timer1)
+
+**[Video](#video)**</p>
+**[References](#references)**
+
+## Team members
 
 * Martin Šmelka(App Design, Code, Device Planning, Documentation)
 * Šimon Špánik(Code, Device Planning, Documentation, Video Editing)
