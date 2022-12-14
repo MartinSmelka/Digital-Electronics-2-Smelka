@@ -29,12 +29,12 @@ The goal of the project is cooperation in pairs, further study of the topic, des
 
 ### Team members
 
-* Martin Šmelka(App Design, Code, Device Planning)
-* Šimon Špánik(Device Planning, Documentation)
+* Martin Šmelka(App Design, Code, Device Planning, Documentation)
+* Šimon Špánik(Code, Device Planning, Documentation, Video Editing)
 
 ## Hardware description
 
-With the help of specified hardware components and Arduino, we created an implementation where we use the Encoder and Joystick to control the LEDs in the shape of a cross and display the data on the LCD.
+With the help of specified hardware components and Arduino, we created an implementation where we use the Encoder to control two servos with assigned LEDs in that denote their state in an application as "Locks". In a real application the Servos in a "Locked" state would move into a position where they would deny the opening of the structure they were installed upon by bracing on a strikeplate.
 
 ### Schematic
 
@@ -62,7 +62,7 @@ Image of two data signals which determine a direction of rotating (taken from da
 
 #### Function
 
-Enconder in our project controls the blinking speed of the LEDs. It is driven in both directions. When pressed, the output is reset and the flashing is turned off.
+Enconder in our project controls the the position of both servos (individually as well as both of them at the same time), pressing on the encoder will execute the chosen state untill a new state is chosen.
 
 
 ### Digilent PmodCLP LCD module
@@ -80,19 +80,22 @@ Pinout:
 
 #### Function
 
-The LCD displays the coordinates of XY axis, encoder blink rate value and joystick direction with its custom directional arrow characters
+The LCD displays the current state of the "Locks", used for displaying encoder values to select a chosen state.
 
 ### LEDs
 
-LEDs used in the circuit has RED color, Package: DIL
+LEDs used in the circuit have both RED and GREEN color, Package: DIL
 
 ![image](https://user-images.githubusercontent.com/99726477/205602378-859bb8f7-a3a6-496c-943f-c0729d48a317.png)
+
+#### Function
+
+The LEDs are used to signify a status of their assigned servo "Lock" (GREEN = "Unlocked", RED = "Locked")
 
 ### Servo
 
 #### Description
-
-
+Lightweight servo capable of turning 180 degrees (90 in either way). Lightweight and controlable via generated PWM. 
 
 Pinout for SG90:
 
@@ -105,7 +108,7 @@ Image of control PWM (taken from datasheet):
 
 #### Function
 
-
+Used as "Locks" switching between two positions of "Unlocked" and "Locked".
 
 ## Software description
  1. **Timer:** [timer.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/include/timer.h)
@@ -129,4 +132,4 @@ Put flowchats of your algorithm(s):
 
 1. [Digilent PmodCLP LCD module](https://www.tme.eu/Document/07d3a201631d75ac52980710936cebec/410-142P.pdf)
 2. [SG90](http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf)
-3. [KY040](https://www.rcscomponents.kiev.ua/datasheets/ky-040-datasheet.pdf)
+3. [KY-040](https://www.rcscomponents.kiev.ua/datasheets/ky-040-datasheet.pdf)
