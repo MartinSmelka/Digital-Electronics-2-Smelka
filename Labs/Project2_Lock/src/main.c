@@ -31,9 +31,9 @@
 #define LED_B_Red PC2
 
 // Define ENCODER for choosing the "Lock"/"Unlock" State.
-#define OutputCLK PB4
+#define OutputCLK PC1
 #define OutputDT PD2
-#define OutputSW PC1
+#define OutputSW PB4
 
 // Define Servo ports for PWM output of the driving signal from Arduino
 #define SERVOA PD3
@@ -58,15 +58,15 @@ static uint8_t SW_ENC = 1; // Base Digital signal of the encoder Switch
  **********************************************************************/
 int main(void)
 {
-    GPIO_mode_input_nopull(&DDRB,OutputCLK);
+    GPIO_mode_input_nopull(&DDRC,OutputCLK);
     GPIO_mode_input_nopull(&DDRD,OutputDT);
-    GPIO_mode_input_pullup(&DDRC,OutputSW);
+    GPIO_mode_input_pullup(&DDRB,OutputSW);
 
     GPIO_mode_output(&DDRD, SERVOA);
     GPIO_mode_output(&DDRB, SERVOB);
 
 
-    Last_State = GPIO_read(&PINB,OutputCLK);
+    Last_State = GPIO_read(&PINC,OutputCLK);
 
     // Initialize display
     lcd_init(LCD_DISP_ON);
@@ -188,7 +188,7 @@ int main(void)
 ISR(TIMER1_OVF_vect)
 {
   char string[4];
-  State = GPIO_read(&PINB,OutputCLK);
+  State = GPIO_read(&PINC,OutputCLK);
     // Start ADC conversion
     ADCSRA |= (1<<ADSC);
 
@@ -225,7 +225,7 @@ ISR(TIMER1_OVF_vect)
   }
 
 Last_State = State;
-SW_ENC = GPIO_read(&PINC,OutputSW);
+SW_ENC = GPIO_read(&PINB,OutputSW);
 }
 
 ISR(TIMER2_OVF_vect)
@@ -236,9 +236,8 @@ ISR(TIMER2_OVF_vect)
 
 /* Function definitions ----------------------------------------------*/
 /**********************************************************************
- * Function: Locl_vect function where the ADC converts Analog Joystick input into useable Digital 
- * Purpose:  Lock Driving
- *           
+ * Function: Checking value of SW and Counter to enable choosing of state and locking chosen state
+ * Purpose:  Lock Driving    
  **********************************************************************/
 
 ISR(ADC_vect)
@@ -297,7 +296,6 @@ ISR(ADC_vect)
       lcd_puts("Lock AB");  
     }
  /* Encoder SW status for driving the Servos and LEDs -----------------------------------------*/
- /* Reset Servo when Encoder SW is not pressed -----------------------------------------*/
   if( SW_ENC == 1)
     {  
 
