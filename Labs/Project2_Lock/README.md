@@ -33,10 +33,8 @@ The goal of the project is cooperation in pairs, further study of the topic, des
    * [LCD](#lcd)
 
 **[Software description](#software-description)**
-   * [Repository structure](#repostruct)
-   * [Flowcharts](#flowcharts)
-      * [Main](#main)
-      * [Timer1](#timer1)
+**[Flowcharts](##Flowcharts)**
+
 
 **[Video](#video)**</p>
 **[References](#references)**
@@ -144,7 +142,7 @@ Used as "Locks" switching between two positions of "Unlocked" and "Locked".
  3. **LCD:** [lcd.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.c), [lcd.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.h), [lcd_definitions.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd_definitions.h)
  4. **Source:** [main.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/src/main.c)
 
-Put flowchats of your algorithm(s):
+## Flowcharts
 
 ![main() flowchart]()
 
