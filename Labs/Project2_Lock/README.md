@@ -43,7 +43,7 @@ With the help of specified hardware components and Arduino, we created an implem
 Components are connected to Arduino Uno like on the schematic. 
 It's using a HD44780 LCD display due to missing Digilent PmodCLP LCD module in SimullDE softwere.
 
-LEDs are connected in active low mode. Joystick is in position of up-right corner to demonstrate the function of circuit.
+LEDs are connected in active low mode. Encoder is in the 5th position to illustrate the function of the circuit in this state. Waveform analyser to illustrate the PWM used to drive the Servos.
 
 ### Arduino UNO
 
@@ -147,3 +147,4 @@ Put flowchats of your algorithm(s):
 1. [Digilent PmodCLP LCD module](https://www.tme.eu/Document/07d3a201631d75ac52980710936cebec/410-142P.pdf)
 2. [SG90](http://www.ee.ic.ac.uk/pcheung/teaching/DE1_EE/stores/sg90_datasheet.pdf)
 3. [KY-040](https://www.rcscomponents.kiev.ua/datasheets/ky-040-datasheet.pdf)
+4. [Arduino UNO](https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf)
