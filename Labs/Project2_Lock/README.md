@@ -94,13 +94,13 @@ LEDs used in the circuit has RED color, Package: DIL
 
 
 
-Pinout:
+Pinout for SG90:
 
-![image]()
+![image](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Pic/SG90_Pin_out.png)
 
 Image of control PWM (taken from datasheet):
 
-![image]()
+![image](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Pic/SG90_PWM.png)
 
 
 #### Function
