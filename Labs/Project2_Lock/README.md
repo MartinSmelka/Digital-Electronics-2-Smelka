@@ -38,12 +38,26 @@ With the help of specified hardware components and Arduino, we created an implem
 
 ### Schematic
 
-![image]()
+![image](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Pic/Circuit_Projekt2.png)
 
 Components are connected to Arduino Uno like on the schematic. 
-It's used HD44780 LCD display due to missing Digilent PmodCLP LCD module in SimullDE softwere.
+It's using a HD44780 LCD display due to missing Digilent PmodCLP LCD module in SimullDE softwere.
 
 LEDs are connected in active low mode. Joystick is in position of up-right corner to demonstrate the function of circuit.
+
+### Arduino UNO
+
+#### Description
+
+Arduino UNO is a microcontroller board based on the ATmega328P [Datasheet](https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf). It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz ceramic resonator (CSTCE16M0V53-R0), a USB connection, a power jack, an ICSP header and a reset button.
+
+Pinout:
+
+![image](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Pic/UNO_Pinout.png)
+
+#### Function
+
+Chosen as a development board due to being based on the ATmega328P. Used for realisation of our application.
 
 ### Encoder
 
