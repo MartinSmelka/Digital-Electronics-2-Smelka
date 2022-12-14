@@ -21,7 +21,8 @@
 #include <lcd.h>            // Peter Fleury's LCD library
 #include <stdlib.h>         // C library. Needed for number conversions
 #include <twi.h>            // I2C/TWI library for AVR-GCC.
-#include <uart.h>           // Interrupt UART library with receive/transmit circular buffers
+#include <uart.h>  
+
 
 // Define LEDS for "Lock" Status 
 #define LED_A_Green PC5
@@ -30,18 +31,22 @@
 #define LED_B_Red PC2
 
 // Define ENCODER for choosing the "Lock" State.
-#define OutputCLK PD1
+#define OutputCLK PB4
 #define OutputDT PD2
-#define OutputSW PD3
+#define OutputSW PC1
 
 // Define Servo for PWM output of drive signal of Arduino
 
+#define SERVOA PD3
+#define SERVOB PB2
 
 // Static VARIABLES for functions 
 static int8_t counter = 0; // Counter to Cap the Encoder
 static uint8_t State; // Encoder State 
 static uint8_t Last_State; // Encoder Last State(Used as referral)
 static uint8_t SW_ENC = 1; // Base Digital signal of the encoder Switch
+
+
 
 /* Function definitions ----------------------------------------------*/
 /**********************************************************************
@@ -53,11 +58,15 @@ static uint8_t SW_ENC = 1; // Base Digital signal of the encoder Switch
  **********************************************************************/
 int main(void)
 {
-    GPIO_mode_input_nopull(&DDRD,OutputCLK);
+    GPIO_mode_input_nopull(&DDRB,OutputCLK);
     GPIO_mode_input_nopull(&DDRD,OutputDT);
-    GPIO_mode_input_pullup(&DDRD,OutputSW);
+    GPIO_mode_input_pullup(&DDRC,OutputSW);
 
-    Last_State = GPIO_read(&PIND,OutputCLK);
+    GPIO_mode_output(&DDRD, SERVOA);
+    GPIO_mode_output(&DDRB, SERVOB);
+
+
+    Last_State = GPIO_read(&PINB,OutputCLK);
 
     // Initialize display
     lcd_init(LCD_DISP_ON);
@@ -68,7 +77,13 @@ int main(void)
     GPIO_mode_output(&DDRC,LED_B_Red);
 
 
+    GPIO_write_high(&PORTC,LED_A_Green);
+    GPIO_write_high(&PORTC,LED_A_Red);
+    GPIO_write_high(&PORTC,LED_B_Green);
+    GPIO_write_high(&PORTC,LED_B_Red);
 
+    
+    
 
 
 
@@ -109,10 +124,22 @@ int main(void)
     // Set clock prescaler to 128
     ADCSRA |= (1<<ADPS2) | (1<<ADPS1) | (1<<ADPS0);
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+    // Configurations of registers for SERVO
+    TCCR1A = _BV(COM1A1) | _BV(COM1B1) | _BV(WGM10) | _BV(WGM11);
+    TCCR1B = _BV(WGM13);
+    TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM20);
+    TCCR2B = _BV(WGM22);
+
     // Engage Timer at 4ms(functional for our purposes)
-    TIM1_overflow_4ms();
+
+    TIM2_overflow_16ms();
+    TIM2_overflow_interrupt_enable();
+
+    // TIMER2 OVF enable
+    TIM1_overflow_33ms();
     TIM1_overflow_interrupt_enable();
+
+    
     
 
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,9 +147,20 @@ int main(void)
     // sei Enables interrupts by setting the global interrupt mask
     sei();
 
+    //Set DEVIDER to 1.5ms pulse - default
+    
+    OCR1A = 19999;
+    OCR1B = 1499;
+
+    OCR2A = 159;
+    OCR2B = 12;
+
+   
     // Infinite loop to keep operations running
     while (1)
     {
+      
+
             /* Empty loop. All subsequent operations are performed exclusively 
          * inside interrupt service routines, ISRs */
     }
@@ -139,12 +177,23 @@ int main(void)
  * Purpose:  Start ADC conversion
  *           LCD Display set up
  *           Encoder set up
+ * 
  **********************************************************************/
+
+//Declaration of fuction which turns all LEDs OFF
+void f()
+{
+      GPIO_write_high(&PORTC,LED_A_Green);
+      GPIO_write_high(&PORTC,LED_A_Red);
+      GPIO_write_high(&PORTC,LED_B_Green);
+      GPIO_write_high(&PORTC,LED_B_Red);
+};
+
 
 ISR(TIMER1_OVF_vect)
 {
   char string[4];
-  State = GPIO_read(&PIND,OutputCLK);
+  State = GPIO_read(&PINB,OutputCLK);
     // Start ADC conversion
     ADCSRA |= (1<<ADSC);
 
@@ -180,13 +229,18 @@ ISR(TIMER1_OVF_vect)
       lcd_puts("    "); // Input empty space to refresh LCD cursor for new imput, this is used most cases 
       
       lcd_gotoxy(11, 0);
-      lcd_puts(string);
+      //lcd_puts(string);
   }
 
 Last_State = State;
-SW_ENC = GPIO_read(&PIND,OutputSW);
+SW_ENC = GPIO_read(&PINC,OutputSW);
 }
 
+ISR(TIMER2_OVF_vect)
+{
+
+
+}
 
 /* Function definitions ----------------------------------------------*/
 /**********************************************************************
@@ -199,10 +253,10 @@ ISR(ADC_vect)
 {
   
   /* Turning all LEDs OFF with permanent High on driving pins ------------------------------------------------*/
-  GPIO_write_high(&PORTC,LED_A_Green);
-  GPIO_write_high(&PORTC,LED_A_Red);
-  GPIO_write_high(&PORTC,LED_B_Green);
-  GPIO_write_high(&PORTC,LED_B_Red);
+  //GPIO_write_high(&PORTC,LED_A_Green);
+  //GPIO_write_high(&PORTC,LED_A_Red);
+  //GPIO_write_high(&PORTC,LED_B_Green);
+  //GPIO_write_high(&PORTC,LED_B_Red);
 
   
   /* Encoder status for LCD -----------------------------------------*/
@@ -215,42 +269,42 @@ ISR(ADC_vect)
     } 
   
   
-  if( counter == 1 || counter == -1 )
+  else if( counter == 1 || counter == -1 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("                   "); 
       lcd_gotoxy(6, 1);
       lcd_puts("Unlock A");  
     }
-    if( counter == 2 || counter == -2 )
+  else if( counter == 2 || counter == -2 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("                 "); 
       lcd_gotoxy(6, 1);
       lcd_puts("Lock A");  
     }
-    if( counter == 3 || counter == -3 )
+  else if( counter == 3 || counter == -3 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("                "); 
       lcd_gotoxy(6, 1);
       lcd_puts("Unlock B");  
     }
-    if( counter == 4 || counter == -4 )
+  else if( counter == 4 || counter == -4 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("               "); 
       lcd_gotoxy(6, 1);
       lcd_puts("Lock B");  
     }
-      if( counter == 5 || counter == -5 )
+  else if( counter == 5 || counter == -5 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("                "); 
       lcd_gotoxy(6, 1);
       lcd_puts("Unlock AB");  
     }
-        if( counter == 6 || counter == -6 )
+  else if( counter == 6 || counter == -6 )
   {  
       lcd_gotoxy(6, 1);
       lcd_puts("                "); 
@@ -264,37 +318,65 @@ if( SW_ENC == 1)
 
     } 
 
+else if( SW_ENC == 0 && counter == 0 )
+  {   
+      f();
+      OCR1B = 1499;
+      OCR2B = 12;
+            
+    } 
 /* Set Position Servo("Lock") when Encoder SW is pressed -----------------------------------------*/
-if( SW_ENC == 0 && (counter == 1 || counter == -1) )
-  {  
+else if( SW_ENC == 0 && (counter == 1 || counter == -1) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_A_Green);
+      
+      OCR1B = 999;
+
     } 
 
-if( SW_ENC == 0 && (counter == 2 || counter == -2) )
-  {  
+else if( SW_ENC == 0 && (counter == 2 || counter == -2) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_A_Red);
+      
+      OCR1B = 1999;      
     } 
 
-if( SW_ENC == 0 && (counter == 3 || counter == -3) )
-  {  
+else if( SW_ENC == 0 && (counter == 3 || counter == -3) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_B_Green);
+      
+      OCR2B = 8;
     } 
 
-if( SW_ENC == 0 && (counter == 4 || counter == -4) )
-  {  
+else if( SW_ENC == 0 && (counter == 4 || counter == -4) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_B_Red);
+      
+      OCR2B = 16;
     } 
 
-if( SW_ENC == 0 && (counter == 5 || counter == -5) )
-  {  
+else if( SW_ENC == 0 && (counter == 5 || counter == -5) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_A_Green);
       GPIO_write_low(&PORTC,LED_B_Green);
+      
+      OCR1B = 999;
+      OCR2B = 8;
     } 
 
-if( SW_ENC == 0 && (counter == 6 || counter == -6) )
-  {  
+else if( SW_ENC == 0 && (counter == 6 || counter == -6) )
+  {   
+      f();
       GPIO_write_low(&PORTC,LED_A_Red);
       GPIO_write_low(&PORTC,LED_B_Red);
+      
+      OCR1B = 1999;
+      OCR2B = 16;
     } 
 
 
