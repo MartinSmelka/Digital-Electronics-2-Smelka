@@ -49,7 +49,7 @@ LEDs are connected in active low mode. Encoder is in the 5th position to illustr
 
 #### Description
 
-Arduino UNO is a microcontroller board based on the ATmega328P [Datasheet](https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf). It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz ceramic resonator (CSTCE16M0V53-R0), a USB connection, a power jack, an ICSP header and a reset button.
+Arduino UNO is a microcontroller board based on the ATmega328P [(Datasheet)](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf). It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz ceramic resonator (CSTCE16M0V53-R0), a USB connection, a power jack, an ICSP header and a reset button.
 
 Pinout:
 
