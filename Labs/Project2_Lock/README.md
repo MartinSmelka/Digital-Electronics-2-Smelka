@@ -108,10 +108,10 @@ Image of control PWM (taken from datasheet):
 
 
 ## Software description
- 1. **Timer:** [timer.h]()
- 2. **Gpio:** [gpio.c](), [gpio.h])
- 3. **LCD:** [lcd.c](), [lcd.h](), [lcd_definitions.h]()
- 4. **Source:** [main.c]()
+ 1. **Timer:** [timer.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/include/timer.h)
+ 2. **Gpio:** [gpio.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/gpio/gpio.c), [gpio.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/gpio/gpio.h)
+ 3. **LCD:** [lcd.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.c), [lcd.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.h), [lcd_definitions.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd_definitions.h)
+ 4. **Source:** [main.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/src/main.c)
 
 Put flowchats of your algorithm(s):
 
