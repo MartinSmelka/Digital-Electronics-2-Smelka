@@ -24,21 +24,6 @@ The goal of the project is cooperation in pairs, further study of the topic, des
    ├── platformio.ini  // Project Configuration File
    └── README.md       // Report of this project
    ```
-
-# Table of Contents
-**[Hardware description](#hardware-description)**
-
-   * [Rotary Encoder](#rotary-encoder)
-   * [Servo SG90](#Servo)
-   * [LCD](#lcd)
-
-**[Software description](#software-description)**
-**[Flowcharts](##Flowcharts)**
-
-
-**[Video](#video)**</p>
-**[References](#references)**
-
 ## Team members
 
 * Martin Šmelka(App Design, Code, Device Planning, Documentation)
