@@ -6,7 +6,7 @@ Application of 2 Servos, rotary encoder, and Digilent PmodCLP LCD module.
 
 The goal of the project is cooperation in pairs, further study of the topic, design of own solutions, implementation, creation of project documentation and presentation of results. The division of roles and tasks within the team is up to their members.
 
-* Students work on a project in the labs during the 10th and 11th weeks of the semester.
+* Students work on a project in the labs during the 12th and 13th weeks of the semester.
 
 * Through the BUT e-learning, students submit a link to the GitHub repository, which contains the complete project in PlatfomIO and a descriptive README file. The submission deadline is the day before the next laboratory, i.e. in 2 weeks.
 
