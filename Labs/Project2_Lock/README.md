@@ -137,7 +137,7 @@ Used as "Locks" switching between two positions of "Unlocked" and "Locked".
 
 ## Video
 
-[Youtube Link to View the Implementation of the Project]()
+[Youtube Link to View the Implementation of the Project](https://youtu.be/GND5rMOg6Ww)
 
 ## References
 
