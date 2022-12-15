@@ -127,13 +127,35 @@ Used as "Locks" switching between two positions of "Unlocked" and "Locked".
  3. **LCD:** [lcd.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.c), [lcd.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd.h), [lcd_definitions.h](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/lib/lcd/lcd_definitions.h)
  4. **Source:** [main.c](https://github.com/MartinSmelka/Digital-Electronics-2-Smelka/blob/main/Labs/Project2_Lock/src/main.c)
 
+Servo control is implemented using PWM, correct phase mode of TIMER1 and TIMER2. TIMER1(33ms prescaler) has register OCR1A on top with value of 19999, which makes the PWM signal with 20ms period.
+TIMER2 on similar principle -> 16ms prescaler, ORC2A on TOP with value 159 for 20ms period.
+
+The individual duty cycles for control SERVOs are set up by datasheet of SG90 servo. 
+
+~1ms pulse -> left position
+~1.5ms pulse -> middle position
+~2ms pulse -> right position
+
+For this purpouse theres computed values of diviser OCR1B and OCR1A.  (example>   20ms*(1499/19999) = 1.5ms)
+
+SERVO A (OCR1B)
+1ms...  999,
+1.5ms.. 1499,
+2ms.... 1999
+
+
+SERVO B (OCR2B)
+1ms .... 8,
+1.5ms .. 12,
+2ms .... 16
+
 ## Flowcharts
 
-![main() flowchart]()
+![main_project2](https://user-images.githubusercontent.com/99726477/207828184-66c54987-cae4-4e5c-93b1-bcc2720a8ab6.png)
 
-![TIMER (1) drawio]()
+![TIMER1_project2](https://user-images.githubusercontent.com/99726477/207828233-d5cb585e-fe37-4021-9c37-998f4cb12c5b.png)
 
-![last_flow drawio (1)]()
+![ADC_vect_project2](https://user-images.githubusercontent.com/99726477/207828276-71da7d1d-0e14-4bbd-890d-ed70516229b5.png)
 
 ## Video
 
